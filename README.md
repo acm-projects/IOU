@@ -40,6 +40,7 @@ Have you ever been in a situation where friends or roommates keep forgetting to 
 # Software to Install
 - [React Native](https://reactnative.dev/docs/environment-setup) OR [Flutter](https://docs.flutter.dev/get-started/install)- Cross-platform mobile app development framework
 - [Git](https://git-scm.com/downloads) - Version control software
+- [Visual Studio Code](https://code.visualstudio.com/download)
 
 # Tutorials
 - [5 JavaScript Concepts you need to know](https://www.youtube.com/watch?v=a00NRSFgHsY)
@@ -58,20 +59,20 @@ Have you ever been in a situation where friends or roommates keep forgetting to 
 - [Dart documentation](https://dart.dev/guides)
 - [JavaScript documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 - [Git Cheat Sheet](https://education.github.com/git-cheat-sheet-education.pdf)
-- [GitHub How Tos](https://docs.github.com/en/get-started/quickstart/hello-world), [YouTube Tutorial](https://www.youtube.com/watch?v=SWYqp7iY_Tc)
+- [GitHub How Tos](https://docs.github.com/en/get-started/quickstart/hello-world), [GitHub YouTube Tutorial](https://www.youtube.com/watch?v=SWYqp7iY_Tc)
 - [How to be successful in Projects](https://docs.google.com/document/d/18Zi3DrKG5e6g5Bojr8iqxIu6VIGl86YBSFlsnJnlM88/edit?usp=sharing)
 
 
 # Estimated Timeline
 |   Week   |          Task(s)          |          Deliverables         |
 | -------- | ------------------------- | ----------------------------- |
-| 1        |                           |                               |
-| 2        |                           |                               |
-| 3        |                           |                               |
-| 4        |                           |                               |
-| 5        |                           |                               |
-| 6        |                           |                               |
-| 7        |                           |                               |
-| 8        |                           |                               |
-| 9        |                           |                               |
-| 10       |                           |                               |
+| 1        | Onboarding tasks          | Meet the team, set meeting dates and times, schedule a design day, finalize tech stack, decide who does what. |
+| 2        | Wireframes and research| Work on finishing wireframes, research and practice with chosen tech stacks, get comfortable with git and github. |
+| 3        | Coding app screens and backend logic | 30% or more progress on frontend and backend logic should be finalized. |
+| 4        | Coding app screens and backend logic | 70% or more progress on frontend and backend logic should be coded. |
+| 5        | Coding app screens and backend databse | Frontend should have almost all screens done, backend should be working on building the firebase funcitonality|
+| 6        | Frontend touch ups and backend integration | Frontend and backend should be working together to inegrate funcitonalities to create a functioning MVP |
+| 7        | Frontend and backend touchups, stretch goals | Polished MVP |
+| 8        | Stretch goals and presentation | decide order of presenters, style of slide deck, write down a script |
+| 9        | Finalize and practice presentation | N/A |
+| Presentation week! | Wow the judges! I believe in you :) | All the growth and development you've experienced while in Projects :blue_heart: |
