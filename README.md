@@ -26,7 +26,7 @@ Have you ever been in a situation where friends or roommates keep forgetting to 
 - Wireframing
   - [Figma](https://www.figma.com)
   - [A quick figma tutorial](https://www.youtube.com/watch?v=FTFaQWZBqQ8)
-- Fontend
+- Frontend
   - [React Native](https://reactnative.dev)  OR [Flutter](https://flutter.dev)
   - [React Native: general documentation](https://reactnative.dev/docs/getting-started)
   - [Flutter: general documentation](https://docs.flutter.dev)
@@ -40,7 +40,7 @@ Have you ever been in a situation where friends or roommates keep forgetting to 
 # Software to Install
 - [React Native](https://reactnative.dev/docs/environment-setup) OR [Flutter](https://docs.flutter.dev/get-started/install)- Cross-platform mobile app development framework
 - [Git](https://git-scm.com/downloads) - Version control software
-- [Visual Studio Code](https://code.visualstudio.com/download)
+- [Visual Studio Code](https://code.visualstudio.com/download) OR [Android Studio](https://developer.android.com/studio/?gclid=Cj0KCQiAxoiQBhCRARIsAPsvo-xXX5s86oGHEjB2qkbUpziXVTtE7hKYu-75k1RGtP3RvP7XNLb1n4UaAnxGEALw_wcB&gclsrc=aw.ds)
 
 # Tutorials
 - [5 JavaScript Concepts you need to know](https://www.youtube.com/watch?v=a00NRSFgHsY)
@@ -66,7 +66,7 @@ Have you ever been in a situation where friends or roommates keep forgetting to 
 # Estimated Timeline
 |   Week   |          Task(s)          |          Deliverables         |
 | -------- | ------------------------- | ----------------------------- |
-| 1        | Onboarding tasks          | Meet the team, set meeting dates and times, schedule a design day, finalize tech stack, decide who does what. |
+| 1        | Onboarding tasks          | Meet the team, set meeting dates and times, schedule a design day, finalize tech stack, decide who does what, get started on wireframes. |
 | 2        | Wireframes and research| Work on finishing wireframes, research and practice with chosen tech stacks, get comfortable with git and github. |
 | 3        | Coding app screens and backend logic | 30% or more progress on frontend and backend logic should be finalized. |
 | 4        | Coding app screens and backend logic | 70% or more progress on frontend and backend logic should be coded. |
