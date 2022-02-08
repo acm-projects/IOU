@@ -72,7 +72,8 @@ Have you ever been in a situation where friends or roommates keep forgetting to 
 | 4        | Coding app screens and backend logic | 70% or more progress on frontend and backend logic should be coded. |
 | 5        | Coding app screens and backend databse | Frontend should have almost all screens done, backend should be working on building the firebase funcitonality|
 | 6        | Frontend touch ups and backend integration | Frontend and backend should be working together to inegrate funcitonalities to create a functioning MVP |
-| 7        | Frontend and backend touchups, stretch goals | Polished MVP |
-| 8        | Stretch goals and presentation | decide order of presenters, style of slide deck, write down a script |
-| 9        | Finalize and practice presentation | N/A |
+| 7        | Frontend and backend touchups | Polished MVP |
+| 8        | Stretch goals | N/A |
+| 9        | Presentation and practice |decide order of presenters, style of slide deck, write down a script |
+| 10       | Finalize presentation and practice | N/A |
 | Presentation week! | Wow the judges! I believe in you :) | All the growth and development you've experienced while in Projects :blue_heart: |
