@@ -19,9 +19,9 @@ const App: () => React$Node = () => {
       <SafeAreaView>
         {/* <MyProfileScreen /> */}
         {/* <FindFriendsScreen /> */}
-        {/*CreateAccount*/}
-        {/*LogIn*/}
-        <SettingsScreen />
+        {/*<CreateAccount>*/}
+        {/*<LogIn>*/}
+        {/*<SettingsScreen />*/}
       </SafeAreaView>
     </>
   );
