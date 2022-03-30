@@ -102,7 +102,7 @@ const SettingsScreen = (props) => {
                     </Pressable>
                 </View>
                 <View style={styles.setting}>
-                    <Pressable onPress={() => console.warn('about setting clicked')}
+                    <Pressable onPress={() => navigation.navigate("Sign Up")}
                         style={{ flexDirection: 'row', alignItems: 'center' }}>
                         <Feather name={"log-out"} size={25} color={'red'} style={{ marginLeft: 30 }}></Feather>
                         <Text style={{ marginLeft: 10, fontSize: 16, color: 'red' }}>Log Out</Text>

@@ -1,66 +1,66 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    //backgroundColor: '#668CD0',
+  backgroundImage: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100%',
+    width: '100%'
   },
   header: {
     fontWeight: "bold",
-    fontSize: 50,
-    color: "black",
-    marginBottom: 40,
-    textAlign: "center"
+    fontSize: 48,
+    color: "white",
+  },
+  quote: {
+    marginRight: 100,
+    fontSize: 20,
+    color: "white",
+    marginBottom: 20,
   },
   inputView: {
     backgroundColor: "white",
-    borderRadius: 25,
+    borderRadius: 15,
     height: 50,
     justifyContent: "center",
     padding: 20,
     margin: 10,
-    width: "90%"
+    width: "85%",
   },
   inputText: {
     height: 50,
-    color: "black"
   },
   forgotPassword: {
-    color: "black",
+    color: "white",
     fontSize: 16,
-    marginLeft: 15,
+    marginRight: 190,
   },
   loginButton1: {
-    width: "90%",
+    width: "85%",
     backgroundColor: "#93A8E1",
-    borderRadius: 25,
-    height: 60,
+    borderRadius: 15,
+    height: 50,
     alignItems: "center",
     justifyContent: "center",
     margin: 10,
     marginTop: 40,
   },
   loginButton2: {
-    width: "90%",
+    width: "85%",
     backgroundColor: "white",
-    borderRadius: 25,
-    height: 60,
+    borderRadius: 15,
+    height: 50,
     alignItems: "center",
     justifyContent: "center",
     margin: 10,
   },
-  backgroundImage: {
-    //To make Square Shape
-    width: 410,
-    height: 720,
-  },
   loginText1: {
     color: "white",
-    fontSize: 30
+    fontSize: 25
   },
   loginText2: {
     color: "#93A8E1",
-    fontSize: 30
+    fontSize: 25
   }
 });
 
