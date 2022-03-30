@@ -4,13 +4,16 @@ import styles from "./styles";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import Feather from "react-native-vector-icons/Feather";
 
+import { useNavigation } from '@react-navigation/native';
+
 const SettingsScreen = (props) => {
     const [inputText, setInputText] = useState('');
+    const navigation = useNavigation();
 
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <Pressable onPress={() => console.warn('back button clicked')}
+                <Pressable onPress={() => navigation.navigate("Profile")}
                     style={styles.backButton}>
                     <AntDesign name={"arrowleft"} size={30} color={"#93A8E1"} />
                 </Pressable>

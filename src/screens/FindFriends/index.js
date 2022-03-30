@@ -4,24 +4,23 @@ import styles from "./styles";
 import AntDesign from "react-native-vector-icons/AntDesign";
 
 import FindFriendsComponent from "../../components/FindFriends";
-import friendsData from '../../../assets/data/friends'
+import friendsData from '../../../assets/data/friends';
+import { useNavigation } from '@react-navigation/native';
 
 const FindFriendsScreen = (props) => {
     const [inputText, setInputText] = useState('');
+    const navigation = useNavigation();
 
     return (
         <View style={styles.container}>
             <ImageBackground source={require('../../../assets/images/backgroundImage.jpeg')}
                 style={styles.backgroundImage} >
-                <View style={{ flexDirection: 'row' }}>
-                    <Pressable onPress={() => console.warn('home button pressed')}
-                        style={styles.homeButton}>
-                        <AntDesign name={"home"} size={30} style={{ color: 'white' }}></AntDesign>
+                <View style={{ flexDirection: 'row', }}>
+                    <Pressable onPress={() => navigation.navigate('Home')}
+                        style={styles.backButton}>
+                        <AntDesign name={"arrowleft"} size={30} color={"white"} />
                     </Pressable>
-                    <Pressable onPress={() => console.warn('profile button pressed')}
-                        style={styles.profileButton}>
-                        <AntDesign name={"user"} size={30} style={{ color: 'white' }}></AntDesign>
-                    </Pressable>
+                    <Text style={styles.heading}>Find Friends</Text>
                 </View>
                 <View style={styles.search}>
                     <AntDesign name={"search1"} size={20} style={styles.searchIcon}></AntDesign>

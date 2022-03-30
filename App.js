@@ -11,18 +11,24 @@ import FindFriendsScreen from './src/screens/FindFriends';
 import SettingsScreen from './src/screens/Settings';
 import LogIn from './src/screens/logIn';
 import CreateAccount from './src/screens/CreateAccount';
+import HomeScreen from './src/screens/Home';
+import Router from './src/navigation/router';
 
 const App: () => React$Node = () => {
   return (
     <>
       <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
+      {/* <SafeAreaView>
         {/* <MyProfileScreen /> */}
-        {/* <FindFriendsScreen /> */}
-        {/*<CreateAccount>*/}
-        {/*<LogIn>*/}
-        {/*<SettingsScreen />*/}
-      </SafeAreaView>
+      {/* <FindFriendsScreen /> */}
+      {/* <CreateAccount /> */}
+      {/* <LogIn /> */}
+      {/* <SettingsScreen /> */}
+      {/* <HomeScreen /> */}
+      {/* <Router /> */}
+      {/* </SafeAreaView> */}
+      <Router />
+
     </>
   );
 };
