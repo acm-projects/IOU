@@ -18,8 +18,8 @@ const App: () => React$Node = () => {
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
         {/* <MyProfileScreen /> */}
-        {/* <FindFriendsScreen /> */}
-        <CreateAccount/>
+        <FindFriendsScreen />
+        {/*<CreateAccount/>*/}
         {/*<LogIn>*/}
         {/*<SettingsScreen />*/}
       </SafeAreaView>
