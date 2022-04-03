@@ -8,13 +8,16 @@ const styles = StyleSheet.create({
         height: "100%",
         width: "100%",
     },
-    homeButton: {
+    backButton: {
         marginLeft: 10,
         marginTop: 10,
     },
-    profileButton: {
+    heading: {
+        fontSize: 30,
+        left: 75,
+        color: 'white',
         marginTop: 10,
-        left: 310,
+        marginBottom: 20,
     },
     search: {
         alignItems: 'center',
@@ -24,7 +27,7 @@ const styles = StyleSheet.create({
         width: 370,
         borderRadius: 15,
         marginLeft: 10,
-        marginTop: 30,
+        // marginTop: 20,
     },
     searchInput: {
         marginLeft: 10,
