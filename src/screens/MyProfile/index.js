@@ -10,18 +10,20 @@ import {
 } from "react-native";
 
 import styles from './styles';
+import { useNavigation } from '@react-navigation/native';
 
 const MyProfileScreen = (props) => {
+    const navigation = useNavigation();
     return (
         <View style={styles.container}>
             <ImageBackground source={require('../../../assets/images/backgroundImage.jpeg')}
                 style={styles.backgroundImage} >
                 <View style={{ flexDirection: 'row' }}>
-                    <Pressable onPress={() => console.warn('home button clicked')}
+                    <Pressable onPress={() => navigation.navigate("Home")}
                         style={styles.homeButton}>
                         <AntDesign name={"home"} size={30} color='white' />
                     </Pressable>
-                    <Pressable onPress={() => console.warn('setting button clicked')}
+                    <Pressable onPress={() => navigation.navigate("Settings")}
                         style={styles.settingButton}>
                         <AntDesign name={"setting"} size={30} color='white' />
                     </Pressable>
