@@ -9,6 +9,8 @@ import SplitBillScreen from "../screens/SplitBill";
 import FindFriendsScreen from "../screens/FindFriends";
 import MyProfileScreen from "../screens/MyProfile";
 import SettingsScreen from "../screens/Settings";
+import AchievementsScreen from "../screens/Achievements";
+import LeaderboardScreen from "../screens/Leaderboard";
 
 const Stack = createStackNavigator();
 
@@ -52,6 +54,13 @@ const Router = (props) => {
                     }}
                 />
                 <Stack.Screen
+                    name={"Leaderboard"}
+                    component={LeaderboardScreen}
+                    options={{
+                        headerShown: false,
+                    }}
+                />
+                <Stack.Screen
                     name={"Profile"}
                     component={MyProfileScreen}
                     options={{
@@ -61,6 +70,13 @@ const Router = (props) => {
                 <Stack.Screen
                     name={"Settings"}
                     component={SettingsScreen}
+                    options={{
+                        headerShown: false,
+                    }}
+                />
+                <Stack.Screen
+                    name={"Achievements"}
+                    component={AchievementsScreen}
                     options={{
                         headerShown: false,
                     }}

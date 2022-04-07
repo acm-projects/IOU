@@ -41,7 +41,10 @@ const HomeScreen = (props) => {
                 >
                     <Text style={{ color: 'white', fontSize: 30, margin: 10 }}>Find Friends</Text>
                 </Pressable>
-                <Pressable style={styles.buttons}>
+                <Pressable
+                    style={styles.buttons}
+                    onPress={() => navigation.navigate('Leaderboard')}
+                >
                     <Text style={{ color: 'white', fontSize: 30, margin: 10 }}>Leaderboard</Text>
                 </Pressable>
             </View>
