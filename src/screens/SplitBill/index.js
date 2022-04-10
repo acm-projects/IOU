@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { View, Text, ImageBackground, Pressable, TextInput, FlatList } from 'react-native';
 import styles from './styles';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
 import FindFriendsComponent from "../../components/FindFriends";
 import friendsData from '../../../assets/data/friends'
-import { useNavigation } from '@react-navigation/native';
+//import { useNavigation } from '@react-navigation/native';
 
 const SplitBillScreen = (props) => {
     const [amount, setAmount] = useState(0);
     const [searchInput, setSearchInput] = useState('');
-    const navigation = useNavigation();
+    //const navigation = useNavigation();
     const[filterdData,setFilteredData]=useState([]);
     const[masterData,setMasterData]=useState([]);
     const[search,setsearch]=useState('');
@@ -58,10 +58,10 @@ const SplitBillScreen = (props) => {
         <ImageBackground source={require('../../../assets/images/backgroundImage.jpeg')}
             style={styles.backgroundImage}>
             <View style={{ flexDirection: 'row', }}>
-                <Pressable onPress={() => navigation.navigate('Home')}
+                {/* <Pressable onPress={() => navigation.navigate('Home')}
                     style={styles.backButton}>
                     <AntDesign name={"arrowleft"} size={30} color={"white"} />
-                </Pressable>
+                </Pressable> */}
                 <Text style={styles.heading}>Split Bill</Text>
             </View>
             <View style={styles.bottomContainer}>
