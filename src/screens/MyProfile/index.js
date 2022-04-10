@@ -54,7 +54,7 @@ const MyProfileScreen = (props) => {
                     <Text style={styles.owedPrice}>$56.78</Text>
                     <Pressable
                         style={styles.achievementsButton}
-                        onPress={() => console.warn('Achievements button clicked')}
+                        onPress={() => navigation.navigate("Achievements")}
                     >
                         <Text style={styles.achievements}>Achievements</Text>
                     </Pressable>

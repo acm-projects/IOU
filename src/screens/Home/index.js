@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, Text, ImageBackground, Pressable } from 'react-native';
 import styles from './styles';
-import Router from '../../navigation/router';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import { useNavigation } from '@react-navigation/native';
 
@@ -41,7 +40,10 @@ const HomeScreen = (props) => {
                 >
                     <Text style={{ color: 'white', fontSize: 30, margin: 10 }}>Find Friends</Text>
                 </Pressable>
-                <Pressable style={styles.buttons}>
+                <Pressable
+                    style={styles.buttons}
+                    onPress={() => navigation.navigate('Leaderboard')}
+                >
                     <Text style={{ color: 'white', fontSize: 30, margin: 10 }}>Leaderboard</Text>
                 </Pressable>
             </View>
