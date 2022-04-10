@@ -30,7 +30,7 @@ const AchievementsScreen = (props) => {
                     <FlatList
                         data={achievementData}
                         renderItem={({ item }) => <AchievementsComponent achievement={item} />}
-                        numColumns={2}
+                        numColumns={1}
                     />
                 </View>
 
