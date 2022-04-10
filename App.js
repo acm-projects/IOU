@@ -11,6 +11,7 @@ import FindFriendsScreen from './src/screens/FindFriends';
 import SettingsScreen from './src/screens/Settings';
 import LogIn from './src/screens/logIn';
 import CreateAccount from './src/screens/CreateAccount';
+import SplitBillScreen from './src/screens/SplitBill';
 
 const App: () => React$Node = () => {
   return (
@@ -18,9 +19,10 @@ const App: () => React$Node = () => {
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
         {/* <MyProfileScreen /> */}
-        <FindFriendsScreen />
+       {/*<FindFriendsScreen />*/}
         {/*<CreateAccount/>*/}
         {/*<LogIn>*/}
+        <SplitBillScreen/>
         {/*<SettingsScreen />*/}
       </SafeAreaView>
     </>
