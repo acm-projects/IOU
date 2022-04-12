@@ -1,14 +1,21 @@
 import React, { useState } from "react";
-import { View, Text, Pressable, TextInput } from "react-native";
+import { View, Text, Pressable, TextInput, ALert } from "react-native";
 import styles from "./styles";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import Feather from "react-native-vector-icons/Feather";
 
 import { useNavigation } from '@react-navigation/native';
+import { firebase } from "@react-native-firebase/auth";
 
 const SettingsScreen = (props) => {
     const [inputText, setInputText] = useState('');
     const navigation = useNavigation();
+
+    const onSignOut = () => {
+        firebase.auth().signOut()
+        console.log(firebase.auth().currentUser)
+        navigation.navigate("Sign Up")
+    }
 
     return (
         <View style={styles.container}>
@@ -102,14 +109,14 @@ const SettingsScreen = (props) => {
                     </Pressable>
                 </View>
                 <View style={styles.setting}>
-                    <Pressable onPress={() => navigation.navigate("Sign Up")}
+                    <Pressable onPress={() => onSignOut()}
                         style={{ flexDirection: 'row', alignItems: 'center' }}>
                         <Feather name={"log-out"} size={25} color={'red'} style={{ marginLeft: 30 }}></Feather>
                         <Text style={{ marginLeft: 10, fontSize: 16, color: 'red' }}>Log Out</Text>
                     </Pressable>
                 </View>
             </View>
-        </View>
+        </View >
     );
 };
 

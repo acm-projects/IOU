@@ -25,7 +25,9 @@ const SignUpScreen = (props) => {
         firstName: firstName,
         lastName: lastName,
         email: email,
-        username: username
+        username: username,
+        amountPositive: 0,
+        amountNegative: 0,
       })
       if (response && response.user) {
         Alert.alert("Success ✅", "Account created successfully")

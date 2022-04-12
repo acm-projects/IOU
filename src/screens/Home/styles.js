@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     welcome: {
         marginTop: 30,
         marginBottom: 20,
-        marginLeft: 10
+        marginLeft: 20,
     },
     bottomContainer: {
         width: '100%',
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
         marginTop: 20,
         borderTopLeftRadius: 25,
         borderTopRightRadius: 25,
-        alignItems: 'center'
+        alignItems: 'center',
     },
     amount: {
         marginRight: 20,
@@ -29,6 +29,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#F5F5F5',
         borderRadius: 10,
         justifyContent: 'center',
+        marginTop: 55,
+        marginBottom: 30,
     },
     buttons: {
         backgroundColor: '#93A8E1',
