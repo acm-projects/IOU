@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import {
     SafeAreaView,
@@ -12,8 +12,33 @@ import {
 import styles from './styles';
 import { useNavigation } from '@react-navigation/native';
 
+import auth, { firebase } from '@react-native-firebase/auth';
+import firestore, { documentSnapshot } from "@react-native-firebase/firestore";
+
 const MyProfileScreen = (props) => {
     const navigation = useNavigation();
+
+    const { uid } = firebase.auth().currentUser;
+    const [user, setUser] = useState();
+
+    const getUser = async () => {
+        try {
+            const documentSnapshot = await firestore()
+                .collection('Users')
+                .doc(uid)
+                .get();
+
+            const userData = documentSnapshot.data();
+            setUser(userData);
+        } catch {
+            console.log("Could not find user")
+        }
+    };
+
+    useEffect(() => {
+        getUser();
+    }, []);
+
     return (
         <View style={styles.container}>
             <ImageBackground source={require('../../../assets/images/backgroundImage.jpeg')}
@@ -29,12 +54,12 @@ const MyProfileScreen = (props) => {
                     </Pressable>
                 </View>
                 <View style={styles.bottomContainer}>
-                    <Text style={styles.name}>John Doe</Text>
+                    <Text style={styles.name}>{user && user?.firstName} {user && user?.lastName}</Text>
                     <View style={styles.friends}>
                         <Text style={{
                             fontSize: 16,
                             fontWeight: 'bold',
-                        }}>300</Text>
+                        }}>{user && user?.friends.length}</Text>
                         <Text style={{
                             fontSize: 14,
                         }}>Friends</Text>
@@ -49,9 +74,9 @@ const MyProfileScreen = (props) => {
                         }}>Requests</Text>
                     </View>
                     <Text style={styles.payments}>Payments to make</Text>
-                    <Text style={styles.paymentPrice}>$12.34</Text>
+                    <Text style={styles.paymentPrice}>${user && user?.amountPositive}</Text>
                     <Text style={styles.owed}>Owed to me</Text>
-                    <Text style={styles.owedPrice}>$56.78</Text>
+                    <Text style={styles.owedPrice}>${user && user?.amountNegative}</Text>
                     <Pressable
                         style={styles.achievementsButton}
                         onPress={() => navigation.navigate("Achievements")}

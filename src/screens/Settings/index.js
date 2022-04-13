@@ -11,8 +11,8 @@ const SettingsScreen = (props) => {
     const [inputText, setInputText] = useState('');
     const navigation = useNavigation();
 
-    const onSignOut = () => {
-        firebase.auth().signOut()
+    const onSignOut = async () => {
+        await firebase.auth().signOut()
         console.log(firebase.auth().currentUser)
         navigation.navigate("Sign Up")
     }
