@@ -18,6 +18,8 @@ import HomeScreen from './src/screens/Home';
 import LeaderboardScreen from './src/screens/Leaderboard';
 import AchievementsScreen from './src/screens/Achievements';
 import SplitBillScreen from './src/screens/SplitBill';
+import BillCategoriesScreen from './src/screens/BillCategories';
+import SplitBillScreen2 from './src/screens/BillSplit2.0';
 
 const Stack = createStackNavigator();
 
@@ -38,7 +40,7 @@ const App: () => React$Node = () => {
       {/* </SafeAreaView> */}
       {/* <Router /> */}
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Sign Up">
+        <Stack.Navigator initialRouteName="BillCategories">
           <Stack.Screen
             name={"Sign Up"}
             component={SignUpScreen}
@@ -98,6 +100,20 @@ const App: () => React$Node = () => {
           <Stack.Screen
             name={"Achievements"}
             component={AchievementsScreen}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name={"BillCategories"}
+            component={BillCategoriesScreen}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name={"Split Bill2"}
+            component={SplitBillScreen2}
             options={{
               headerShown: false,
             }}
