@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+//import styles from "../MyProfile/styles";
 
 const styles = StyleSheet.create({
     backgroundImage: {
@@ -38,7 +39,15 @@ const styles = StyleSheet.create({
         height: 65,
         alignItems: 'center',
         justifyContent: 'center',
-    }
+    },
+    title: {
+        textAlign: 'center',
+        fontSize: 20,
+        marginBottom: 15,
+    },
+    keyTest: {
+        fontSize: 20,
+    },
 });
 
 export default styles;
