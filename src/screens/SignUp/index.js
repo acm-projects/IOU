@@ -28,7 +28,8 @@ const SignUpScreen = (props) => {
         username: username,
         amountPositive: 0,
         amountNegative: 0,
-        friends: []
+        addedToBill: false,
+        tokens: [],
       })
       firestore().collection('Users').doc(response.user.uid).collection("friends").doc(response.user.uid).set({ name: firstName })
       if (response && response.user) {

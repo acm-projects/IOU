@@ -20,6 +20,7 @@ const MyProfileScreen = (props) => {
 
     const { uid } = firebase.auth().currentUser;
     const [user, setUser] = useState();
+    const [numFriends, setNumFriends] = useState();
 
     const getUser = async () => {
         try {
@@ -35,8 +36,12 @@ const MyProfileScreen = (props) => {
         }
     };
 
-    useEffect(() => {
+    useEffect(async () => {
         getUser();
+        const query = firestore().collection("Users").doc(uid).collection("friends");
+        const snapshot = await query.get();
+        setNumFriends(snapshot.size);
+
     }, []);
 
     return (
@@ -59,7 +64,7 @@ const MyProfileScreen = (props) => {
                         <Text style={{
                             fontSize: 16,
                             fontWeight: 'bold',
-                        }}>{user && user?.friends.length}</Text>
+                        }}>{numFriends}</Text>
                         <Text style={{
                             fontSize: 14,
                         }}>Friends</Text>

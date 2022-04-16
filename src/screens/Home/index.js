@@ -46,10 +46,10 @@ const HomeScreen = (props) => {
             </View>
             <View style={styles.bottomContainer}>
                 <View style={{ flexDirection: 'row' }}>
-                    <Pressable style={styles.amount}>
+                    <Pressable style={styles.amount} onPress={() => navigation.navigate("Transactions")}>
                         <Text style={{ color: 'green', fontSize: 36, margin: 10, }}>+${user && user?.amountPositive}</Text>
                     </Pressable>
-                    <Pressable style={styles.amount}>
+                    <Pressable style={styles.amount} onPress={() => navigation.navigate("Transactions")}>
                         <Text style={{ color: 'red', fontSize: 36, margin: 10, }}>-${user && user?.amountNegative}</Text>
                     </Pressable>
                 </View>

@@ -33,8 +33,8 @@ const FindFriendsComponent = (props) => {
         getUser();
     }, []);
 
-    useEffect(() => {
-        const subscriber = firestore()
+    useEffect(async () => {
+        const subscriber = await firestore()
             .collection('Users').doc(uid).collection('friends')
             .onSnapshot(querySnapshot => {
                 const users = [];
@@ -45,15 +45,14 @@ const FindFriendsComponent = (props) => {
                         key: documentSnapshot.id,
                     });
                 });
-
+                for (let i = 0; i < users.length; i++) {
+                    if (friend.key == users[i].key) {
+                        setAdded(!added);
+                    }
+                }
                 setUserFriends(users);
                 setLoading(false);
             });
-        for (let i = 0; i < userFriends.length; i++) {
-            if (friend.key == userFriends[i].key) {
-                setAdded(true);
-            }
-        }
         // Unsubscribe from events when no longer in use
         return () => subscriber();
     }, []);

@@ -18,6 +18,9 @@ import HomeScreen from './src/screens/Home';
 import LeaderboardScreen from './src/screens/Leaderboard';
 import AchievementsScreen from './src/screens/Achievements';
 import SplitBillScreen from './src/screens/SplitBill';
+import TransactionsScreen from './src/screens/Transactions';
+import TransactionComponent from './src/components/Transaction';
+import SplitBillComponent from './src/components/SplitBill';
 
 const Stack = createStackNavigator();
 
@@ -35,8 +38,14 @@ const App: () => React$Node = () => {
       {/* <Router /> */}
       {/* <LeaderboardScreen /> */}
       {/* <AchievementsScreen /> */}
+      {/* <TransactionsScreen /> */}
+      {/* <TransactionComponent /> */}
+      {/* <SplitBillComponent /> */}
+      {/* <SplitBillScreen /> */}
       {/* </SafeAreaView> */}
       {/* <Router /> */}
+
+
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Sign Up">
           <Stack.Screen
@@ -98,6 +107,13 @@ const App: () => React$Node = () => {
           <Stack.Screen
             name={"Achievements"}
             component={AchievementsScreen}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name={"Transactions"}
+            component={TransactionsScreen}
             options={{
               headerShown: false,
             }}
