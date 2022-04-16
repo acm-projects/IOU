@@ -4,6 +4,7 @@ import styles from './styles';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import { useNavigation } from '@react-navigation/native';
 import PieChart from 'react-native-pie-chart';
+import BarChart from 'react-native-bar-chart';
 
 
 const BillCategoriesScreen = (props) => {
@@ -11,6 +12,19 @@ const BillCategoriesScreen = (props) => {
     const widthAndHeight = 280;
     const series = [123, 321, 123, 789, 537];
     const sliceColor = ['#F44336', '#2196F3', '#FFEB3B', '#4CAF50', '#FF9800'];
+
+    // data can be one or two dimensional Array
+    const data = [
+        [70, -5],
+        [80, -10],
+        [110, 0],
+        [100, 0],
+        [280, -60],
+    ];
+    // labels
+    const horizontalData = ['April', 'May', 'June', 'July', 'August'];
+
+
     return (
         <ImageBackground source={require('../../../assets/images/backgroundImage.jpeg')}
             style={styles.backgroundImage}>
@@ -44,18 +58,11 @@ const BillCategoriesScreen = (props) => {
                             coverFill={'#FFF'}
                         />
                     </View>
+                    
                 </ScrollView>
-                <Text style = {styles.keyTest}>Test</Text>
+                <Text style={styles.keyTest}>Test</Text>
+                <BarChart data={data} horizontalData={horizontalData} />;
             </View>
-
-
-
-
-
-
-
-
-
 
         </ImageBackground>
     );
