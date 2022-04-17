@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, ImageBackground, Pressable, TextInput, FlatList, ActivityIndicator } from 'react-native';
+import { View, Text, ImageBackground, Pressable, TextInput, FlatList, ActivityIndicator, Alert } from 'react-native';
 import styles from './styles';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
@@ -8,7 +8,7 @@ import friendsData from '../../../assets/data/friends'
 import { useNavigation } from '@react-navigation/native';
 import SplitBillComponent from '../../components/SplitBill';
 import auth from '@react-native-firebase/auth';
-import firestore, { documentSnapshot } from "@react-native-firebase/firestore";
+import firestore, { documentSnapshot, FieldValue } from "@react-native-firebase/firestore";
 import { firebase } from '@react-native-firebase/app';
 
 const SplitBillScreen = (props) => {
@@ -24,6 +24,7 @@ const SplitBillScreen = (props) => {
     const [loading, setLoading] = useState(true);
     const [item, setItem] = useState();
     const [usersOnBill, setUsersOnBill] = useState([]);
+    const admin = require('firebase-admin');
 
     useEffect(() => {
         fetchPosts();
@@ -111,39 +112,56 @@ const SplitBillScreen = (props) => {
 
     const onCreateTransaction = async () => {
         const d = new Date();
-        const id = d.getFullYear() + "-" + d.getMonth() + "-" + d.getDate() + "-" + amount
-        console.log(id)
+        const transactionid = d.getFullYear() + "-" + d.getMonth() + "-" + d.getDate() + "-" + amount;
+        if (amount == '') {
+            console.log("must enter amount");
+            return;
+        }
+        if (item == '') {
+            console.log("must enter item");
+            return;
+        }
         try {
-            console.log(users)
             for (let i = 0; i < users.length; i++) {
-                if (users[i].addedToBill) {
+                if (users[i].addedToBill == true) {
                     usersOnBill.push(users[i]);
-                    await firestore().collection('Users').doc(uid).collection("transactions").doc(id)
-                        .collection("usersSentTo").doc(users[i].key).set({ name: users[i].firstName, paid: false })
                 }
             }
-            console.log(usersOnBill.length)
-            const amountPerPerson = (amount / (usersOnBill.length + 1));
-            await firestore().collection('Users').doc(uid).collection("transactions").doc(id).set({
-                totalAmount: amount,
-                userSending: uid,
-                item: item,
-                amountPerPerson: amountPerPerson,
-            })
+            const amountPerPerson = (amount / (usersOnBill.length + 1)).toFixed(2);
+
+            // Create seperate transaction for each user
             for (let i = 0; i < usersOnBill.length; i++) {
-                await firestore().collection('Users').doc(usersOnBill[i].key).collection("transactions").doc(id).set({
+                // add to current users transactions
+                await firestore().collection('Users').doc(uid).collection('transactions').doc(transactionid).set({
                     totalAmount: amount,
                     userSending: uid,
                     item: item,
                     amountPerPerson: amountPerPerson,
+                    userOnBill: usersOnBill[i].key,
                 })
-                for (let j = 0; j < usersOnBill.length; j++) {
-                    await firestore().collection('Users').doc(usersOnBill[i].key).collection("transactions").doc(id)
-                        .collection("usersSentTo").doc(usersOnBill[j].key).set({ name: usersOnBill[j].firstName, paid: false })
-                }
+
+                // add to the added users transactions
+                await firestore().collection('Users').doc(usersOnBill[i].key).collection('transactions').doc(transactionid).set({
+                    totalAmount: amount,
+                    userSending: uid,
+                    item: item,
+                    amountPerPerson: amountPerPerson,
+                    userOnBill: usersOnBill[i].key,
+                })
+
+                await firestore().collection('Users').doc(usersOnBill[i].key).update({
+                    amountNegative: admin.firestore().FieldValue.increment(amountPerPerson)
+                    // amountNegative: amountPerPerson,
+                })
+                await firestore().collection('Users').doc(uid).update({
+                    amountPositive: admin.firestore().FieldValue.increment(amountPerPerson)
+                })
             }
-            // await firestore().collection('Users').doc(uid).collection("transactions").doc(id)
-            //     .collection("usersSentTo").doc(uid).set({ name: user.firstName })
+
+            await firestore().collection('Users').doc(uid).update({
+                // amountPositive: (amount - amountPerPerson),
+            })
+
             firestore().collection('Users').onSnapshot(querySnapshot => {
                 querySnapshot.forEach(documentSnapshot => {
                     documentSnapshot.ref.update({
@@ -153,9 +171,57 @@ const SplitBillScreen = (props) => {
             });
             navigation.navigate("Home")
         } catch (e) {
-            console.log(e)
+            console.log(e);
         }
     }
+
+    // const onCreateTransaction = async () => {
+    //     const d = new Date();
+    //     const id = d.getFullYear() + "-" + d.getMonth() + "-" + d.getDate() + "-" + amount
+    //     console.log(id)
+    //     try {
+    //         console.log(users)
+    //         for (let i = 0; i < users.length; i++) {
+    //             if (users[i].addedToBill) {
+    //                 usersOnBill.push(users[i]);
+    //                 await firestore().collection('Users').doc(uid).collection("transactions").doc(id)
+    //                     .collection("usersSentTo").doc(users[i].key).set({ name: users[i].firstName, paid: false })
+    //             }
+    //         }
+    //         console.log(usersOnBill.length)
+    //         const amountPerPerson = (amount / (usersOnBill.length + 1)).toFixed(2);
+    //         await firestore().collection('Users').doc(uid).collection("transactions").doc(id).set({
+    //             totalAmount: amount,
+    //             userSending: uid,
+    //             item: item,
+    //             amountPerPerson: amountPerPerson,
+    //         })
+    //         for (let i = 0; i < usersOnBill.length; i++) {
+    //             await firestore().collection('Users').doc(usersOnBill[i].key).collection("transactions").doc(id).set({
+    //                 totalAmount: amount,
+    //                 userSending: uid,
+    //                 item: item,
+    //                 amountPerPerson: amountPerPerson,
+    //             })
+    //             for (let j = 0; j < usersOnBill.length; j++) {
+    //                 await firestore().collection('Users').doc(usersOnBill[i].key).collection("transactions").doc(id)
+    //                     .collection("usersSentTo").doc(usersOnBill[j].key).set({ name: usersOnBill[j].firstName, paid: false })
+    //             }
+    //         }
+    //         // await firestore().collection('Users').doc(uid).collection("transactions").doc(id)
+    //         //     .collection("usersSentTo").doc(uid).set({ name: user.firstName })
+    //         firestore().collection('Users').onSnapshot(querySnapshot => {
+    //             querySnapshot.forEach(documentSnapshot => {
+    //                 documentSnapshot.ref.update({
+    //                     addedToBill: false
+    //                 })
+    //             });
+    //         });
+    //         navigation.navigate("Home")
+    //     } catch (e) {
+    //         console.log(e)
+    //     }
+    // }
 
     const onSplitBill = () => {
         for (let i = 0; i < usersOnBill.length; i++) {
