@@ -5,11 +5,65 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 
 import TransactionComponent from '../../components/Transaction';
 import transactionData from '../../../assets/data/transactions';
+import TransactionUOMeComponent from '../../components/TransactionUOMe';
 
 import { useNavigation } from '@react-navigation/native';
+import auth from '@react-native-firebase/auth';
+import firestore, { documentSnapshot } from "@react-native-firebase/firestore";
+import { firebase } from '@react-native-firebase/app';
 
 const TransactionsScreen = (props) => {
     const navigation = useNavigation();
+    const { uid } = firebase.auth().currentUser;
+    const [transactions, setTransactions] = useState([]);
+    const [UOMe, setUOMe] = useState([]);
+    const [IOU, setIOU] = useState([]);
+
+    useEffect(() => {
+        getTransactions();
+        // console.log(transactions);
+        // console.log(transactions);
+        // setArrayType
+        setArrayType();
+        // console.log(IOU);
+        console.log(UOMe);
+    }, []);
+
+    const getTransactions = async () => {
+        try {
+            await firestore().collection('Users').doc(uid).collection('transactions')
+                .onSnapshot(querySnapshot => {
+                    const t = [];
+
+                    querySnapshot.forEach(documentSnapshot => {
+                        t.push({
+                            ...documentSnapshot.data(),
+                            key: documentSnapshot.id,
+                        });
+                    });
+
+                    setTransactions(t);
+                });
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    const setArrayType = () => {
+        const u = [];
+        const io = [];
+        for (let i = 0; i < transactions.length; i++) {
+            if (transactions[i].userSending == uid) {
+                u.push(transactions[i]);
+            } else {
+                io.push(transactions[i]);
+            }
+        }
+        setUOMe(u);
+        setIOU(io);
+    }
+
+
     return (
         <ImageBackground source={require('../../../assets/images/backgroundImage.jpeg')} style={styles.backgroundImage}>
             <View style={{ flexDirection: 'row', }}>
@@ -25,7 +79,7 @@ const TransactionsScreen = (props) => {
                         <Text style={styles.IOUText}>I-O-U</Text>
                     </View>
                     <FlatList
-                        data={transactionData}
+                        data={IOU}
                         renderItem={({ item }) => <TransactionComponent transaction={item} />}
                     />
                 </View>
@@ -34,8 +88,8 @@ const TransactionsScreen = (props) => {
                         <Text style={styles.UOMeText}>U-O-Me</Text>
                     </View>
                     <FlatList
-                        data={transactionData}
-                        renderItem={({ item }) => <TransactionComponent transaction={item} />}
+                        data={UOMe}
+                        renderItem={({ item }) => <TransactionUOMeComponent transaction={item} />}
                     />
                 </View>
             </View>
