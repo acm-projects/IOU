@@ -25,7 +25,7 @@ const TransactionUOMeComponent = (props) => {
     return (
         <View style={styles.container}>
             <Image source={require('../../../assets/images/sampleProfilePic.jpeg')} style={styles.image} />
-            <Text style={styles.name}>From {name} for {transaction.item}</Text>
+            <Text style={styles.name}>From {transaction.userOnBill} for {transaction.item}</Text>
             <Text style={styles.amount}>${transaction.amountPerPerson}</Text>
         </View>
     );

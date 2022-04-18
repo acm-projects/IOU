@@ -27,7 +27,7 @@ const TransactionComponent = (props) => {
     return (
         <View style={styles.container}>
             <Image source={require('../../../assets/images/sampleProfilePic.jpeg')} style={styles.image} />
-            <Text style={styles.name}>{name} for {transaction.item}</Text>
+            <Text style={styles.name}>{transaction.userSending} for {transaction.item}</Text>
             <Text style={styles.amount}>${transaction.amountPerPerson}</Text>
         </View>
     );

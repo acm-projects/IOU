@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, Image, Pressable, ActivityIndicator,Alert } from "react-native";
+import { View, Text, Image, Pressable, ActivityIndicator } from "react-native";
 import styles from "./styles"
 
 import auth from '@react-native-firebase/auth';
-import messaging from "@react-native-firebase/messaging"
 import firestore, { documentSnapshot } from "@react-native-firebase/firestore";
 import { firebase } from '@react-native-firebase/app';
 //import { firebase } from '@react-native-firebase/app';
@@ -15,45 +14,6 @@ const FindFriendsComponent = (props) => {
     const [user, setUser] = useState(); // current user
     const [userFriends, setUserFriends] = useState([]); // array of current users friends
     const [loading, setLoading] = useState(true);
-
-    messaging().setBackgroundMessageHandler(async remoteMessage => {
-        console.log('Message handled in the background!', remoteMessage);
-      });
-    
-      useEffect(() => {
-        const unsubscribe = messaging().onMessage(async remoteMessage => {
-            Alert.alert(remoteMessage.notification.body)
-        });
-    
-        return unsubscribe;
-      }, []);
-
-    const saveTokenToDatabase = async (token)=> {
-        // Assume user is already signed in
-        const userId = auth().currentUser.uid;
-        console.log("token is "+token)
-        //console.log("UID is "+userId)
-        //console.log(firebase.messaging().isDeviceRegisteredForRemoteMessages)
-        // Add the token to the users datastore
-        await firestore()
-          .collection('Users').doc(userId).update({
-            tokens: firestore.FieldValue.arrayUnion(token)
-          });
-      }
-
-      useEffect(() => {
-        // Get the device token
-        messaging()
-          .getToken()
-          .then(token => {
-            saveTokenToDatabase(token);
-          });
-        
-            messaging().onTokenRefresh(token => {
-            saveTokenToDatabase(token);
-          });
-        }, []);
-
 
     const getUser = async () => {
         try {
@@ -101,8 +61,6 @@ const FindFriendsComponent = (props) => {
         return <ActivityIndicator />;
     }
 
-
-      
     const addFriend = async () => {
         console.log(userFriends)
         try {
@@ -138,7 +96,7 @@ const FindFriendsComponent = (props) => {
                 // source={{ uri: friend.image }}
                 source={require('../../../assets/images/sampleProfilePic.jpeg')}
             />
-            <Text style={styles.name}>{friend}</Text>
+            <Text style={styles.name}>{friend.firstName} {friend.lastName}</Text>
             <Pressable
                 onPress={() => {
                     console.log("button pressed")

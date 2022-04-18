@@ -6,6 +6,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import TransactionComponent from '../../components/Transaction';
 import transactionData from '../../../assets/data/transactions';
 import TransactionUOMeComponent from '../../components/TransactionUOMe';
+import transactionUOMeData from '../../../assets/data/transactionsUOMe';
 
 import { useNavigation } from '@react-navigation/native';
 import auth from '@react-native-firebase/auth';
@@ -79,7 +80,7 @@ const TransactionsScreen = (props) => {
                         <Text style={styles.IOUText}>I-O-U</Text>
                     </View>
                     <FlatList
-                        data={IOU}
+                        data={transactionData}
                         renderItem={({ item }) => <TransactionComponent transaction={item} />}
                     />
                 </View>
@@ -88,7 +89,7 @@ const TransactionsScreen = (props) => {
                         <Text style={styles.UOMeText}>U-O-Me</Text>
                     </View>
                     <FlatList
-                        data={UOMe}
+                        data={transactionUOMeData}
                         renderItem={({ item }) => <TransactionUOMeComponent transaction={item} />}
                     />
                 </View>
