@@ -19,22 +19,36 @@ const FindFriendsScreen = (props) => {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
-        fetchPosts();
-        return () => {
+        const names=[];
+            firestore().collection("Users").get().then((querySnapshot)=>{
+            querySnapshot.forEach((doc)=>{
+                    const name=doc.data().firstName
+                    const lastName=doc.data().lastName
+                    //console.log(name)
+                    names.push(name+' '+lastName)
+                })
+            })
+                //console.log("Users starts:"+names)
+                //setUsers(users);
+            setUsers(names)
+            setLoading(false);
+            setMasterData(names);
+            setFilteredData(names);
+            
+            //console.log("Users starts:"+users)
+            
+        // Unsubscribe from events when no longer in use
+        //return () => subscriber();
+    }, []);
 
-        }
-    }, [])
-
-    const fetchPosts = () => {
-        setMasterData(friendsData);
-        setFilteredData(friendsData);
-    }
+    
 
     const searchFilter = (text) => {
+        console.log("Users starts:"+users)
         if (text) {
             const newData = masterData.filter((item) => {
-                const itemData = item.name ? item.name.toUpperCase()
-                    : ''.toUpperCase();
+                const itemData = item.toUpperCase(); 
+                //console.log(item.firstName) 
                 const textData = text.toUpperCase();
                 return itemData.indexOf(textData) > -1;
 
@@ -56,26 +70,7 @@ const FindFriendsScreen = (props) => {
         )
     }
 
-    useEffect(() => {
-        const subscriber = firestore()
-            .collection('Users')
-            .onSnapshot(querySnapshot => {
-                const users = [];
-
-                querySnapshot.forEach(documentSnapshot => {
-                    users.push({
-                        ...documentSnapshot.data(),
-                        key: documentSnapshot.id,
-                    });
-                });
-
-                setUsers(users);
-                setLoading(false);
-            });
-
-        // Unsubscribe from events when no longer in use
-        return () => subscriber();
-    }, []);
+    
 
     if (loading) {
         return <ActivityIndicator />;
@@ -104,11 +99,9 @@ const FindFriendsScreen = (props) => {
                 <View style={styles.bottomContainer}>
                     <Text style={styles.recommended}>Recommended</Text>
                     <FlatList
-                        // data={filterdData}
-                        // keyExtractor={(item, index) => index.toString()}
-                        // ItemSeperatorComponent={ItemSeperatorView}
-                        // renderItem={({ item }) => <FindFriendsComponent friend={item} />}
-                        data={users}
+                        data={filterdData}
+                        keyExtractor={(item, index) => index.toString()}
+                        ItemSeperatorComponent={ItemSeperatorView}
                         renderItem={({ item }) => <FindFriendsComponent friend={item} />}
                     />
                 </View>
