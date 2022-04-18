@@ -26,22 +26,36 @@ const SplitBillScreen = (props) => {
     const [usersOnBill, setUsersOnBill] = useState([]);
 
     useEffect(() => {
-        fetchPosts();
-        return () => {
+        const names=[];
+            firestore().collection("Users").get().then((querySnapshot)=>{
+            querySnapshot.forEach((doc)=>{
+                    const name=doc.data().firstName
+                    const lastName=doc.data().lastName
+                    //console.log(name)
+                    names.push(name+' '+lastName)
+                })
+            })
+                //console.log("Users starts:"+names)
+                //setUsers(users);
+            setUsers(names)
+            setLoading(false);
+            setMasterData(names);
+            setFilteredData(names);
+            
+            //console.log("Users starts:"+users)
+            
+        // Unsubscribe from events when no longer in use
+        //return () => subscriber();
+    }, []);
 
-        }
-    }, [])
-
-    const fetchPosts = () => {
-        setMasterData(friendsData);
-        setFilteredData(friendsData);
-    }
+    
 
     const searchFilter = (text) => {
+        console.log("Users starts:"+users)
         if (text) {
             const newData = masterData.filter((item) => {
-                const itemData = item.name ? item.name.toUpperCase()
-                    : ''.toUpperCase();
+                const itemData = item.toUpperCase(); 
+                //console.log(item.firstName) 
                 const textData = text.toUpperCase();
                 return itemData.indexOf(textData) > -1;
 
@@ -53,7 +67,6 @@ const SplitBillScreen = (props) => {
             setsearch(text);
         }
     }
-
     const ItemSeperatorView = () => {
         return (
             <View
@@ -80,30 +93,7 @@ const SplitBillScreen = (props) => {
         }
     };
 
-    useEffect(() => {
-        const subscriber = firestore()
-            .collection('Users')
-            .onSnapshot(querySnapshot => {
-                const users = [];
-
-                querySnapshot.forEach(documentSnapshot => {
-                    // documentSnapshot.ref.update({
-                    //     addedToBill: false
-                    // })
-                    // PUT THIS IN ONSUBMIT
-                    users.push({
-                        ...documentSnapshot.data(),
-                        key: documentSnapshot.id,
-                    });
-                });
-
-                setUsers(users);
-                setLoading(false);
-            });
-
-        // Unsubscribe from events when no longer in use
-        return () => subscriber();
-    }, []);
+    
 
     if (loading) {
         return <ActivityIndicator />;
@@ -270,10 +260,10 @@ const SplitBillScreen = (props) => {
                         />
                     </View>
                     <FlatList
-                        data={users}
-                        // keyExtractor={(item, index) => index.toString()}
-                        // ItemSeperatorComponent={ItemSeperatorView}
-                        renderItem={({ item }) => <SplitBillComponent friend={item} />}
+                        data={filterdData}
+                        keyExtractor={(item, index) => index.toString()}
+                        ItemSeperatorComponent={ItemSeperatorView}
+                        renderItem={({ item }) => <FindFriendsComponent friend={item} />}
                     />
                 </View>
                 <Pressable style={styles.submitButton} onPress={() => onCreateTransaction()}>
