@@ -6,11 +6,19 @@ import { useNavigation } from '@react-navigation/native';
 import PieChart from 'react-native-pie-chart';
 
 
+//import * as data from './data.json'
+/*
+const word = data.name;
+console.log(word);
+//const customData = require('./data.json');
+*/
+
 const BillCategoriesScreen = (props) => {
     const navigation = useNavigation();
-    const widthAndHeight = 280;
-    const series = [123, 321, 123, 789, 537];
-    const sliceColor = ['#F44336', '#2196F3', '#FFEB3B', '#4CAF50', '#FF9800'];
+    const widthAndHeight = 180;
+    const series = [100, 250, 200, 350];
+    // Misc, Food, Rent, Fun
+    const sliceColor = ['blue', 'red', 'orange', 'green'];
     return (
         <ImageBackground source={require('../../../assets/images/backgroundImage.jpeg')}
             style={styles.backgroundImage}>
@@ -32,21 +40,42 @@ const BillCategoriesScreen = (props) => {
                         <Text style={{ color: 'red', fontSize: 36, margin: 10, }}>-$56.78</Text>
                     </Pressable>
                 </View>
-                <ScrollView style={{ flex: 1 }}>
-                    <View style={styles.container}>
-                        <Text style={styles.title}>Categories</Text>
-                        <PieChart
-                            widthAndHeight={widthAndHeight}
-                            series={series}
-                            sliceColor={sliceColor}
-                            doughnut={true}
-                            coverRadius={0.45}
-                            coverFill={'#FFF'}
-                        />
+
+                <View style={styles.keyList}>
+                    <View style={{ flexDirection: 'row' }}>
+                        <View style={styles.misc} />
+                        <Text style={styles.keyStyle}>Misc</Text>
                     </View>
-                </ScrollView>
-                <Text style = {styles.keyTest}>Test</Text>
+                   <View style={{ flexDirection: 'row' }}>
+                        <View style={styles.food} />
+                        <Text style={styles.keyStyle}>Food</Text>
+                    </View>
+                    <View style={{ flexDirection: 'row' }}>
+                        <View style={styles.rent} />
+                        <Text style={styles.keyStyle}>Rent</Text>
+                    </View>
+                    <View style={{ flexDirection: 'row' }}>
+                        <View style={styles.fun} />
+                        <Text style={styles.keyStyle}>Fun</Text>
+                    </View>
+                </View>
+                <View>
+                    <ScrollView style={{ flex: 1 }}>
+                        <View style={styles.container}>
+                            <Text style={styles.title}>Categories</Text>
+                            <PieChart
+                                widthAndHeight={widthAndHeight}
+                                series={series}
+                                sliceColor={sliceColor}
+                                doughnut={true}
+                                coverRadius={0.45}
+                                coverFill={'#FFF'}
+                            />
+                        </View>
+                    </ScrollView>
+                </View>
             </View>
+
 
 
 

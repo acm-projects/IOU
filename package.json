@@ -10,6 +10,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@material-ui/core": "^4.12.4",
     "@react-native-community/art": "^1.2.0",
     "@react-native-community/masked-view": "^0.1.11",
     "@react-native-firebase/app": "^14.7.0",
@@ -21,6 +22,7 @@
     "@react-navigation/stack": "^6.2.1",
     "react": "17.0.2",
     "react-native": "0.67.3",
+    "react-native-fs": "^2.19.0",
     "react-native-gesture-handler": "^2.4.0",
     "react-native-picker": "^4.3.7",
     "react-native-pie-chart": "^2.0.2",
