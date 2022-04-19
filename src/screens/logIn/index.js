@@ -17,7 +17,7 @@ const LoginScreen = (props) => {
     try {
       let response = await auth().signInWithEmailAndPassword(email, password)
       if (response && response.user) {
-        Alert.alert("Success ✅", "Authenticated successfully")
+        // Alert.alert("Success ✅", "Authenticated successfully")
         navigation.navigate("Home")
       }
     } catch (e) {

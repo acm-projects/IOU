@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
         marginLeft: 10,
     },
     bottomContainer: {
-        height: 570,
+        height: 650,
         width: "100%",
         backgroundColor: 'white',
         marginTop: 30,

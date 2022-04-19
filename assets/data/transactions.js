@@ -20,4 +20,18 @@ export default [
         amountPerPerson: 10.00,
         item: 'Rent',
     },
+    {
+        id: '3',
+        userSending: 'Dilip Kumar',
+        totalAmount: 20,
+        amountPerPerson: 15.00,
+        item: 'Gas',
+    },
+    {
+        id: '4',
+        userSending: 'Francis Masangcay',
+        totalAmount: 40,
+        amountPerPerson: 5.00,
+        item: 'Groceries',
+    },
 ];

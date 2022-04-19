@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     bottomContainer: {
         backgroundColor: 'white',
         width: '100%',
-        height: 700,
+        height: 750,
         borderRadius: 25,
         //alignItems: 'center',
     },

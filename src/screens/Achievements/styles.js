@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     },
     bottomContainer: {
         width: '100%',
-        height: 600,
+        height: 650,
         backgroundColor: 'white',
         borderTopLeftRadius: 25,
         borderTopRightRadius: 25,

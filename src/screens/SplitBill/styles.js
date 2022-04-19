@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     bottomContainer: {
         backgroundColor: 'white',
         width: '100%',
-        height: 700,
+        height: 740,
         borderRadius: 25,
         //alignItems: 'center',
     },
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     },
     friendsContainer: {
         backgroundColor: '#F5F5F5',
-        height: 410,
+        height: 450,
         borderRadius: 25,
         margin: 20,
     },

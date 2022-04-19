@@ -6,7 +6,7 @@ const LeaderboardComponent = (props) => {
     return (
         <View style={styles.container}>
             <Text style={styles.text}>{friend.place}. </Text>
-            <Image source={{ uri: friend.image }} style={styles.image} />
+            <Image source={require('../../../assets/images/defaultProfile.jpeg')} style={styles.image} />
             <Text style={styles.text}>{friend.name}</Text>
         </View>
     );
