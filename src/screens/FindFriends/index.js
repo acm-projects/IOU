@@ -6,6 +6,7 @@ import AntDesign from "react-native-vector-icons/AntDesign";
 import FindFriendsComponent from "../../components/FindFriends";
 import friendsData from '../../../assets/data/friends';
 import { useNavigation } from '@react-navigation/native';
+import messaging from "@react-native-firebase/messaging"
 
 import auth, { firebase } from '@react-native-firebase/auth';
 import firestore, { documentSnapshot } from "@react-native-firebase/firestore";
@@ -30,6 +31,37 @@ const FindFriendsScreen = (props) => {
     //     setMasterData(users);
     //     setFilteredData(users);
     // }
+
+    messaging().setBackgroundMessageHandler(async remoteMessage => {
+        console.log('Message handled in the background!', remoteMessage);
+      });
+
+      const saveTokenToDatabase = async (token)=> {
+        // Assume user is already signed in
+        const userId = auth().currentUser.uid;
+        console.log("token is "+token)
+        //console.log("UID is "+userId)
+        //console.log(firebase.messaging().isDeviceRegisteredForRemoteMessages)
+        // Add the token to the users datastore
+        await firestore()
+          .collection('Users').doc(userId).update({
+            tokens: firestore.FieldValue.arrayUnion(token)
+          });
+      }
+    
+
+    useEffect(() => {
+        // Get the device token
+        messaging()
+          .getToken()
+          .then(token => {
+            return saveTokenToDatabase(token);
+          });
+        
+          return messaging().onTokenRefresh(token => {
+            saveTokenToDatabase(token);
+          });
+        }, []);
 
     const searchFilter = (text) => {
         if (text) {
