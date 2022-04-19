@@ -35,8 +35,33 @@ const BillCategoriesScreen = (props) => {
                         <Text style={{ color: 'red', fontSize: 36, margin: 10, }}>-$56.78</Text>
                     </Pressable>
                 </View>
-                <ScrollView style={{ flex: 1 }}>
-                    <View style={styles.container}>
+
+
+
+
+                <ScrollView style={{ flexDirection: 'column' }}>
+
+                    <View style={styles.keyList}>
+                        <View style={{ flexDirection: 'row' }}>
+                            <View style={styles.misc} />
+                            <Text style={styles.keyStyle}>Misc</Text>
+                        </View>
+                        <View style={{ flexDirection: 'row' }}>
+                            <View style={styles.food} />
+                            <Text style={styles.keyStyle}>Food</Text>
+                        </View>
+                        <View style={{ flexDirection: 'row' }}>
+                            <View style={styles.rent} />
+                            <Text style={styles.keyStyle}>Rent</Text>
+                        </View>
+                        <View style={{ flexDirection: 'row' }}>
+                            <View style={styles.fun} />
+                            <Text style={styles.keyStyle}>Fun</Text>
+                        </View>
+                    </View>
+
+    
+                    <View style={styles.pieContainer}>
                         <Text style={styles.title}>Categories</Text>
                         <PieChart
                             widthAndHeight={widthAndHeight}
@@ -48,35 +73,35 @@ const BillCategoriesScreen = (props) => {
                         />
                     </View>
 
-                </ScrollView>
-                
+                    <View>
+                        <Text style={styles.title}>Monthly Bills</Text>
+                        <BarChart
+                            data={{
+                                labels: ['January', 'February', 'March', 'April', 'May'],
+                                datasets: [{ data: [10, 20, 50, 40, 20] }],
+                            }}
+                            width={Dimensions.get('window').width - 10}
+                            height={200}
+                            yAxisLabel={'$ - '}
+                            chartConfig={{
+                                backgroundColor: '#1cc910',
+                                backgroundGradientFrom: '#458336',
+                                backgroundGradientTo: '#458336',
+                                decimalPlaces: 2,
+                                color: (opacity = 255) => '#ECEFF1',
+                                style: {
+                                    borderRadius: 12, padding: 10
+                                },
+                            }}
+                        />
+                    </View>
 
-                <BarChart
-                data={{
-                    labels: ['January', 'February', 'March', 'April', 'May'],
-                    datasets: [{ data: [10, 20, 50, 40, 20] }],
-                }}
-                width={Dimensions.get('window').width - 10}
-                height={150}
-                yAxisLabel={'$ - '}
-                chartConfig={{
-                    backgroundColor: '#1cc910',
-                    backgroundGradientFrom: '#458336',
-                    backgroundGradientTo: '#458336',
-                    decimalPlaces: 2,
-                    color: (opacity = 255) => '#ECEFF1',
-                    style: {
-                        borderRadius: 12, padding: 10
-                    },
-                }}
-            />
+                </ScrollView>
+
+
+
 
             </View>
-
-
-
-
-          
 
         </ImageBackground>
     );

@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
     backgroundImage: {
-        height: '100%',
+        height: '95%',
         width: '100%',
     },
     profileButton: {
@@ -49,6 +49,64 @@ const styles = StyleSheet.create({
     keyTest: {
         fontSize: 20,
     },
+    pieContainer: {
+        flexDirection: 'column',
+        width: '100%',
+        backgroundColor: 'white',
+        height: 300,
+        marginTop: 0,
+        marginBottom: 10,
+        //borderTopLeftRadius: 25,
+        //borderTopRightRadius: 25,
+        alignItems: 'center',
+    },
+    keyStyle: {
+        fontSize: 15,
+        textAlign: 'center',
+        flexDirection: 'row',
+        marginRight: 10,
+    },
+    misc: {
+        width: 10,
+        height: 10,
+        backgroundColor: 'blue',
+        marginTop: 5,
+        marginRight: 5, 
+        //flexDirection: 'column',
+    },
+    food: {
+        width: 10,
+        height: 10,
+        backgroundColor: 'red',
+        marginTop: 5,
+        marginRight: 5, 
+        //flexDirection: 'column',
+    },
+    rent: {
+        width: 10,
+        height: 10,
+        backgroundColor: 'orange',
+        marginTop: 5,
+        marginRight: 5, 
+        //flexDirection: 'column',
+    },
+    fun: {
+        width: 10,
+        height: 10,
+        backgroundColor: 'green',
+        marginTop: 5,
+        marginRight: 5, 
+        //flexDirection: 'column',
+    },
+    keyList: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center'
+
+    },
+    
 });
+
+
 
 export default styles;
