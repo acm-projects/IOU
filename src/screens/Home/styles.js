@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
         borderTopLeftRadius: 25,
         borderTopRightRadius: 25,
         alignItems: 'center'
+    
     },
     amount: {
         marginRight: 20,

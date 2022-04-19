@@ -22,7 +22,8 @@ const styles = StyleSheet.create({
         marginTop: 20,
         borderTopLeftRadius: 25,
         borderTopRightRadius: 25,
-        alignItems: 'center'
+        alignItems: 'center',
+        flexDirection: 'column',
     },
     amount: {
         marginRight: 20,
