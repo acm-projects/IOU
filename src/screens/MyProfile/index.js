@@ -89,7 +89,7 @@ const MyProfileScreen = (props) => {
                         <Text style={styles.achievements}>Achievements</Text>
                     </Pressable>
                 </View>
-                <Image source={require('../../../assets/images/sampleProfilePic.jpeg')}
+                <Image source={require('../../../assets/images/defaultProfile.jpeg')}
                     style={styles.profilePicture} />
             </ImageBackground>
         </View >
