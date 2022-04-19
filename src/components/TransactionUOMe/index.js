@@ -5,8 +5,10 @@ import auth from '@react-native-firebase/auth';
 import firestore, { documentSnapshot } from "@react-native-firebase/firestore";
 import { firebase } from '@react-native-firebase/app';
 
-const TransactionComponent = (props) => {
+
+const TransactionUOMeComponent = (props) => {
     const transaction = props.transaction;
+    const { uid } = firebase.auth().currentUser;
     const [name, setName] = useState();
 
     useEffect(() => {
@@ -15,19 +17,15 @@ const TransactionComponent = (props) => {
     });
 
     const getUsersName = async () => {
-        try {
-            const user = await firestore().collection('Users').doc(transaction.userSending).get();
-            // console.log(user.data().firstName);
-            setName(user.data().firstName);
-        } catch (e) {
-            console.log(e);
-        }
+        const user = await firestore().collection('Users').doc(transaction.userOnBill).get();
+        // console.log(user.data().firstName);
+        setName(user.data().firstName);
     }
 
     return (
         <View style={styles.container}>
             <Image source={require('../../../assets/images/sampleProfilePic.jpeg')} style={styles.image} />
-            <Text style={styles.name}>{transaction.userSending} for {transaction.item}</Text>
+            <Text style={styles.name}>From {transaction.userOnBill} for {transaction.item}</Text>
             <Text style={styles.amount}>${transaction.amountPerPerson}</Text>
         </View>
     );
@@ -63,4 +61,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default TransactionComponent;
+export default TransactionUOMeComponent;

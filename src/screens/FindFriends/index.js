@@ -18,27 +18,29 @@ const FindFriendsScreen = (props) => {
     const [loading, setLoading] = useState(true);
     const [users, setUsers] = useState([]);
 
-    useEffect(() => {
-        fetchPosts();
-        return () => {
+    // useEffect(() => {
+    //     fetchPosts();
+    //     return () => {
 
-        }
-    }, [])
+    //     }
+    // }, [])
 
-    const fetchPosts = () => {
-        setMasterData(friendsData);
-        setFilteredData(friendsData);
-    }
+    // const fetchPosts = () => {
+    //     // console.log(users);
+    //     setMasterData(users);
+    //     setFilteredData(users);
+    // }
 
     const searchFilter = (text) => {
         if (text) {
             const newData = masterData.filter((item) => {
-                const itemData = item.name ? item.name.toUpperCase()
+                const itemData = item.firstName ? item.firstName.toUpperCase()
                     : ''.toUpperCase();
                 const textData = text.toUpperCase();
                 return itemData.indexOf(textData) > -1;
 
             });
+            console.log(filterdData)
             setFilteredData(newData);
             setsearch(text);
         } else {
@@ -71,6 +73,8 @@ const FindFriendsScreen = (props) => {
 
                 setUsers(users);
                 setLoading(false);
+                setMasterData(users);
+                setFilteredData(users);
             });
 
         // Unsubscribe from events when no longer in use
@@ -104,11 +108,11 @@ const FindFriendsScreen = (props) => {
                 <View style={styles.bottomContainer}>
                     <Text style={styles.recommended}>Recommended</Text>
                     <FlatList
-                        // data={filterdData}
-                        // keyExtractor={(item, index) => index.toString()}
-                        // ItemSeperatorComponent={ItemSeperatorView}
+                        data={filterdData}
+                        keyExtractor={(item, index) => index.toString()}
+                        ItemSeperatorComponent={ItemSeperatorView}
                         // renderItem={({ item }) => <FindFriendsComponent friend={item} />}
-                        data={users}
+                        // data={users}
                         renderItem={({ item }) => <FindFriendsComponent friend={item} />}
                     />
                 </View>

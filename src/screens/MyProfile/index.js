@@ -78,9 +78,9 @@ const MyProfileScreen = (props) => {
                             fontSize: 14,
                         }}>Requests</Text>
                     </View>
-                    <Text style={styles.payments}>Payments to make</Text>
+                    <Text style={styles.payments}>Owed to me</Text>
                     <Text style={styles.paymentPrice}>${user && user?.amountPositive}</Text>
-                    <Text style={styles.owed}>Owed to me</Text>
+                    <Text style={styles.owed}>Payments to make</Text>
                     <Text style={styles.owedPrice}>${user && user?.amountNegative}</Text>
                     <Pressable
                         style={styles.achievementsButton}
