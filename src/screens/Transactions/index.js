@@ -26,7 +26,7 @@ const TransactionsScreen = (props) => {
         // console.log(transactions);
         // setArrayType
         setArrayType();
-        // console.log(IOU);
+        console.log(IOU);
         console.log(UOMe);
     }, []);
 
