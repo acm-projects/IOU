@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "796100132687",
+    "project_id": "ioudb-4996f",
+    "storage_bucket": "ioudb-4996f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:796100132687:android:0d573cfebb6f9cc0bfcf3a",
+        "android_client_info": {
+          "package_name": "com.iou"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "796100132687-dv9rbc8i837j253sajlka6vkos25ug9q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmZ1mnu9jaPhW2o_r3N1Y0lUtAt0SDpik"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "796100132687-dv9rbc8i837j253sajlka6vkos25ug9q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

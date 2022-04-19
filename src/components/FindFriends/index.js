@@ -1,21 +1,106 @@
-import React, { useState } from "react";
-import { View, Text, Image, Pressable } from "react-native";
+import React, { useState, useEffect } from "react";
+import { View, Text, Image, Pressable, ActivityIndicator } from "react-native";
 import styles from "./styles"
+
+import auth from '@react-native-firebase/auth';
+import firestore, { documentSnapshot } from "@react-native-firebase/firestore";
+import { firebase } from '@react-native-firebase/app';
+//import { firebase } from '@react-native-firebase/app';
 
 const FindFriendsComponent = (props) => {
     const friend = props.friend;
     const [added, setAdded] = useState(false);
+    const { uid } = firebase.auth().currentUser;
+    const [user, setUser] = useState(); // current user
+    const [userFriends, setUserFriends] = useState([]); // array of current users friends
+    const [loading, setLoading] = useState(true);
+
+    const getUser = async () => {
+        try {
+            const documentSnapshot = await firestore()
+                .collection('Users')
+                .doc(uid)
+                .get();
+
+            const userData = documentSnapshot.data();
+            setUser(userData);
+        } catch {
+            console.log("Could not find user")
+        }
+    };
+
+    useEffect(() => {
+        getUser();
+    }, []);
+
+    useEffect(async () => {
+        const subscriber = await firestore()
+            .collection('Users').doc(uid).collection('friends')
+            .onSnapshot(querySnapshot => {
+                const users = [];
+
+                querySnapshot.forEach(documentSnapshot => {
+                    users.push({
+                        ...documentSnapshot.data(),
+                        key: documentSnapshot.id,
+                    });
+                });
+                for (let i = 0; i < users.length; i++) {
+                    if (friend.key == users[i].key) {
+                        setAdded(!added);
+                    }
+                }
+                setUserFriends(users);
+                setLoading(false);
+            });
+        // Unsubscribe from events when no longer in use
+        return () => subscriber();
+    }, []);
+
+    if (loading) {
+        return <ActivityIndicator />;
+    }
+
+    const addFriend = async () => {
+        console.log(userFriends)
+        try {
+            for (let i = 0; i < userFriends.length; i++) {
+                if (friend.key == userFriends[i].key) {
+                    //console.log("Already friends with " + friend.key)
+                    await firestore().collection('Users').doc(uid).collection('friends').doc(friend.key).delete().then(() => {
+                        console.log('User deleted!');
+                    });
+                    await firestore().collection('Users').doc(friend.key).collection('friends').doc(uid).delete().then(() => {
+                        console.log('User deleted!');
+                    });
+                    return;
+                }
+            }
+            await firestore().collection('Users').doc(uid).collection("friends").doc(friend.key).set({ name: friend.firstName })
+            console.log("friend added")
+            const documentSnapshot = await firestore().collection('Users').doc(uid).get()
+            const currUser = documentSnapshot.data()
+            console.log(currUser.firstName)
+            await firestore().collection('Users').doc(friend.key).collection("friends").doc(uid).set({ name: currUser.firstName })
+            console.log("friend added")
+        } catch (e) {
+            console.log(e)
+        }
+    }
 
     return (
         <View style={styles.container}>
             <Image
                 style={styles.image}
-                source={{ uri: friend.image }}
-            //source={require('../../../assets/images/sampleProfilePic.jpeg')}
+
+                // source={{ uri: friend.image }}
+                source={require('../../../assets/images/sampleProfilePic.jpeg')}
             />
-            <Text style={styles.name}>{friend.name}</Text>
+            <Text style={styles.name}>{friend.firstName} {friend.lastName}</Text>
             <Pressable
                 onPress={() => {
+                    console.log("button pressed")
+                    addFriend()
                     setAdded(!added);
                     // friend.friend = !friend.friend;
                 }}
