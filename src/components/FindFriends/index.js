@@ -94,7 +94,7 @@ const FindFriendsComponent = (props) => {
                 style={styles.image}
 
                 // source={{ uri: friend.image }}
-                source={require('../../../assets/images/sampleProfilePic.jpeg')}
+                source={require('../../../assets/images/defaultProfile.jpeg')}
             />
             <Text style={styles.name}>{friend.firstName} {friend.lastName}</Text>
             <Pressable
