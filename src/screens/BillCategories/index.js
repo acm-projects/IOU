@@ -37,8 +37,6 @@ const BillCategoriesScreen = (props) => {
                 </View>
 
 
-
-
                 <ScrollView style={{ flexDirection: 'column' }}>
 
                     <View style={styles.keyList}>
