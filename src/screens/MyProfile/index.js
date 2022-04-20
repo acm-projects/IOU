@@ -73,15 +73,15 @@ const MyProfileScreen = (props) => {
                         <Text style={{
                             fontSize: 16,
                             fontWeight: 'bold',
-                        }}>20</Text>
+                        }}>0</Text>
                         <Text style={{
                             fontSize: 14,
                         }}>Requests</Text>
                     </View>
                     <Text style={styles.payments}>Owed to me</Text>
-                    <Text style={styles.paymentPrice}>${user && user?.amountPositive}</Text>
+                    <Text style={styles.paymentPrice}>$45.00</Text>
                     <Text style={styles.owed}>Payments to make</Text>
-                    <Text style={styles.owedPrice}>${user && user?.amountNegative}</Text>
+                    <Text style={styles.owedPrice}>$33.34</Text>
                     <Pressable
                         style={styles.achievementsButton}
                         onPress={() => navigation.navigate("Achievements")}

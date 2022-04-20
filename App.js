@@ -24,7 +24,8 @@ import TransactionComponent from './src/components/Transaction';
 import SplitBillComponent from './src/components/SplitBill';
 
 LogBox.ignoreLogs(["Possible Unhandled Promise Rejection", "An effect function must not return anything",
-"Internal React error: Attempted to capture a commit phase", "Failed prop type: Invalid prop `value` of"])
+"Internal React error: Attempted to capture a commit phase", "Failed prop type: Invalid prop `value` of",
+"Can't perform a React state update on an unmounted"])
 const Stack = createStackNavigator();
 
 const App: () => React$Node = () => {
