@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     misc: {
         width: 10,
         height: 10,
-        backgroundColor: 'blue',
+        backgroundColor: '#2196F3',
         marginTop: 5,
         marginRight: 5, 
         //flexDirection: 'column',
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     fun: {
         width: 10,
         height: 10,
-        backgroundColor: 'green',
+        backgroundColor: '#4CAF50',
         marginTop: 5,
         marginRight: 5, 
         //flexDirection: 'column',

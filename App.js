@@ -40,7 +40,7 @@ const App: () => React$Node = () => {
       {/* </SafeAreaView> */}
       {/* <Router /> */}
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="BillCategories">
+        <Stack.Navigator initialRouteName="Split Bill2">
           <Stack.Screen
             name={"Sign Up"}
             component={SignUpScreen}

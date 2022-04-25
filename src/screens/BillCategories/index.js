@@ -10,8 +10,8 @@ import { BarChart } from 'react-native-chart-kit';
 const BillCategoriesScreen = (props) => {
     const navigation = useNavigation();
     const widthAndHeight = 220;
-    const series = [123, 321, 123, 789, 537];
-    const sliceColor = ['#F44336', '#2196F3', '#FFEB3B', '#4CAF50', '#FF9800'];
+    const series = [123, 444, 789, 537];
+    const sliceColor = ['red', '#2196F3', '#4CAF50', 'orange'];
 
 
     return (
